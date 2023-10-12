@@ -11,7 +11,8 @@ body {
 
 main {
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  min-height: 100vh;
+  grid-template-columns: 1fr 4fr;
 }
 
 .sidebar {
@@ -55,8 +56,8 @@ main {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   border: none;
   background-color: #6640d8;
