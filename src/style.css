@@ -34,13 +34,32 @@ main {
 .todo-list {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   padding: 7rem 0;
+  position: relative;
 }
 
 .todo-item {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  padding-left: 3rem;
   min-width: 85%;
+  height: 3rem;
+  border-radius: 8px;
+  background-color: #cfbefe;
+  font-size: 14px;
 }
 
-.todo-item > button {
-  width: 100%;
+.todo-list > button {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: none;
+  background-color: #6640d8;
+  color: #ffffff;
+  font-size: 18px;
 }
