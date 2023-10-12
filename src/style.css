@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+.sidebar {
+  padding: 5rem 0;
+}
+
+.sidebar > ul {
+  list-style: none;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  padding: 7rem 0;
+}
+
+.todo-item {
+  min-width: 85%;
+}
+
+.todo-item > button {
+  width: 100%;
+}
