@@ -1,17 +1,14 @@
 import './style.css';
 
-const body = document.querySelector('body');
-const mainDiv = document.createElement('main');
+const mainDiv = document.querySelector('main');
 
-const sidebarDiv = document.createElement('div');
-sidebarDiv.classList.add('sidebar');
+const sidebarDiv = document.querySelector('.sidebar');
 
 const defaultButton = document.createElement('button');
 defaultButton.textContent = 'Default';
 sidebarDiv.appendChild(defaultButton);
 
-const todoListDiv = document.createElement('div');
-todoListDiv.classList.add('todo-list');
+const todoListDiv = document.querySelector('.todo-list');
 
 function createTodoItem(text) {
   const itemDiv = document.createElement('div');
@@ -30,5 +27,3 @@ todoListDiv.appendChild(addButton);
 
 mainDiv.appendChild(sidebarDiv);
 mainDiv.appendChild(todoListDiv);
-
-body.appendChild(mainDiv);
