@@ -7,7 +7,6 @@ export default function createList() {
   }
 
   function markDone(index) {
-    // implement the done function
     listItems.splice(index, 1);
   }
 

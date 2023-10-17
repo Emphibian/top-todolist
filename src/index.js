@@ -1,29 +1,33 @@
-import './style.css';
+import "./style.css";
+import createList from "./list.js";
 
-const mainDiv = document.querySelector('main');
+const todoListDiv = document.querySelector(".todo-list");
 
-const sidebarDiv = document.querySelector('.sidebar');
+function renderTodoListItems(listObj) {
+  todoListDiv.innerHTML = "";
+  const listItems = listObj.getItems();
+  listItems.forEach((item, index) => {
+    const listItemDiv = document.createElement("div");
+    listItemDiv.classList.add("todo-item");
 
-const defaultButton = document.createElement('button');
-defaultButton.textContent = 'Default';
-sidebarDiv.appendChild(defaultButton);
+    const titlePara = document.createElement("p");
+    titlePara.textContent = item.title;
 
-const todoListDiv = document.querySelector('.todo-list');
+    const doneButton = document.createElement("button");
+    doneButton.textContent = "done";
+    doneButton.addEventListener("click", () => {
+      listObj.markDone(index);
+      renderTodoListItems(list);
+    });
 
-function createTodoItem(text) {
-  const itemDiv = document.createElement('div');
-  itemDiv.textContent = text;
-  itemDiv.classList.add('todo-item');
-  return itemDiv;
+    listItemDiv.appendChild(titlePara);
+    listItemDiv.appendChild(doneButton);
+
+    todoListDiv.appendChild(listItemDiv);
+  });
 }
 
-const addButton = document.createElement('button');
-addButton.classList.add('add-button');
-addButton.textContent = '+';
-
-todoListDiv.appendChild(createTodoItem('Do this'));
-todoListDiv.appendChild(createTodoItem('Do that'));
-todoListDiv.appendChild(addButton);
-
-mainDiv.appendChild(sidebarDiv);
-mainDiv.appendChild(todoListDiv);
+const list = createList();
+list.createListItem("Do this", "");
+list.createListItem("Do that", "");
+renderTodoListItems(list);
