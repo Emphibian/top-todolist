@@ -1,13 +1,6 @@
-export default function createTodoItem(index, title, desc, doneFunction) {
-  const index = index;
-
-  let markDone = () => {
-    markDoneFunction(index);
-  };
-
+export default function createTodoItem(title, desc) {
   return {
     title,
     desc,
-    done,
   };
 }

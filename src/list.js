@@ -1,3 +1,4 @@
+import createTodoItem from "./item.js";
 export default function createList() {
   const listItems = [];
 
@@ -10,8 +11,18 @@ export default function createList() {
     listItems.splice(index, 1);
   }
 
+  function createListItem(title, desc) {
+    const item = createTodoItem(title, desc);
+    addItem(item);
+  }
+
+  function getItems() {
+    return [...listItems];
+  }
+
   return {
-    addItem,
+    createListItem,
     markDone,
+    getItems,
   };
 }
