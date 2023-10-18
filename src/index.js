@@ -13,15 +13,15 @@ function renderTodoListItems(listObj) {
     const titlePara = document.createElement("p");
     titlePara.textContent = item.title;
 
-    const doneButton = document.createElement("button");
-    doneButton.textContent = "done";
-    doneButton.addEventListener("click", () => {
+    const doneCheckbox = document.createElement("input");
+    doneCheckbox.type = "checkbox";
+    doneCheckbox.addEventListener("click", () => {
       listObj.markDone(index);
       renderTodoListItems(list);
     });
 
+    listItemDiv.appendChild(doneCheckbox);
     listItemDiv.appendChild(titlePara);
-    listItemDiv.appendChild(doneButton);
 
     todoListDiv.appendChild(listItemDiv);
   });
