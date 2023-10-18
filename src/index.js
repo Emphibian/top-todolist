@@ -2,6 +2,13 @@ import "./style.css";
 import createList from "./list.js";
 
 const todoListDiv = document.querySelector(".todo-list");
+const sidebarDiv = document.querySelector(".sidebar");
+
+const listsArray = [];
+const list = createList("Default");
+list.createListItem("Do this", "");
+list.createListItem("Do that", "");
+listsArray.push(list);
 
 function renderTodoListItems(listObj) {
   todoListDiv.innerHTML = "";
@@ -27,7 +34,13 @@ function renderTodoListItems(listObj) {
   });
 }
 
-const list = createList();
-list.createListItem("Do this", "");
-list.createListItem("Do that", "");
+function renderLists(lists) {
+  lists.forEach((list) => {
+    const listButton = document.createElement("button");
+    listButton.textContent = list.title;
+    sidebarDiv.appendChild(listButton);
+  });
+}
+
 renderTodoListItems(list);
+renderLists(listsArray);

@@ -1,5 +1,5 @@
 import createTodoItem from "./item.js";
-export default function createList() {
+export default function createList(title) {
   const listItems = [];
 
   function addItem(itemObj) {
@@ -20,6 +20,7 @@ export default function createList() {
   }
 
   return {
+    title,
     createListItem,
     markDone,
     getItems,
