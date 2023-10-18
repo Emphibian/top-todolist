@@ -8,7 +8,13 @@ const listsArray = [];
 const list = createList("Default");
 list.createListItem("Do this", "");
 list.createListItem("Do that", "");
+
+const list2 = createList("test");
+list2.createListItem("don't do this at work!", "");
+list2.createListItem("definitely don't do this", "")
+
 listsArray.push(list);
+listsArray.push(list2);
 
 function renderTodoListItems(listObj) {
   todoListDiv.innerHTML = "";
@@ -24,7 +30,7 @@ function renderTodoListItems(listObj) {
     doneCheckbox.type = "checkbox";
     doneCheckbox.addEventListener("click", () => {
       listObj.markDone(index);
-      renderTodoListItems(list);
+      renderTodoListItems(listObj);
     });
 
     listItemDiv.appendChild(doneCheckbox);
@@ -38,9 +44,15 @@ function renderLists(lists) {
   lists.forEach((list) => {
     const listButton = document.createElement("button");
     listButton.textContent = list.title;
+
+    listButton.addEventListener("click", () => {
+      renderTodoListItems(list);
+    });
+
     sidebarDiv.appendChild(listButton);
   });
+
 }
 
-renderTodoListItems(list);
 renderLists(listsArray);
+renderTodoListItems(list);
