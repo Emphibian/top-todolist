@@ -31,13 +31,26 @@ function renderTodoListItems(listObj) {
     doneCheckbox.addEventListener("click", () => {
       listObj.markDone(index);
       renderTodoListItems(listObj);
+      renderAddTodoListItemsButton(listObj);
     });
 
     listItemDiv.appendChild(doneCheckbox);
     listItemDiv.appendChild(titlePara);
 
     todoListDiv.appendChild(listItemDiv);
+    renderAddTodoListItemsButton(listObj);
   });
+}
+
+function renderAddTodoListItemsButton(listObj) {
+  const addButton = document.createElement('button');
+  addButton.textContent = '+';
+  addButton.addEventListener("click", () => {
+    listObj.createListItem('dummy', '');
+    renderTodoListItems(listObj);
+  });
+
+  todoListDiv.appendChild(addButton);
 }
 
 function renderLists(lists) {
@@ -47,6 +60,7 @@ function renderLists(lists) {
 
     listButton.addEventListener("click", () => {
       renderTodoListItems(list);
+      renderAddTodoListItemsButton(list);
     });
 
     sidebarDiv.appendChild(listButton);
@@ -56,3 +70,4 @@ function renderLists(lists) {
 
 renderLists(listsArray);
 renderTodoListItems(list);
+renderAddTodoListItemsButton(list);
