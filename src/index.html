@@ -9,7 +9,17 @@
   <body>
     <main>
       <div class="sidebar"></div>
-      <div class="todo-list"></div>
+      <div class="todo-area">
+        <dialog id="addTask">
+          <form method="dialog">
+            <label for="desc">Task:
+            </label>
+            <input type="text" id="desc" name="desc"></input>
+          </form>
+        </dialog>
+        <div class="todo-list">
+        </div>
+      </div>
     </main>
   </body>
 </html>

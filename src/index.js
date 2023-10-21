@@ -1,5 +1,6 @@
 import "./style.css";
 import createList from "./list.js";
+import createAddButton from './addButton.js';
 
 const todoListDiv = document.querySelector(".todo-list");
 const sidebarDiv = document.querySelector(".sidebar");
@@ -43,13 +44,7 @@ function renderTodoListItems(listObj) {
 }
 
 function renderAddTodoListItemsButton(listObj) {
-  const addButton = document.createElement('button');
-  addButton.textContent = '+';
-  addButton.addEventListener("click", () => {
-    listObj.createListItem('dummy', '');
-    renderTodoListItems(listObj);
-  });
-
+  const addButton = createAddButton();
   todoListDiv.appendChild(addButton);
 }
 
