@@ -43,6 +43,7 @@ main {
   gap: 1rem;
   padding: 7rem 0;
   position: relative;
+  height: 100%;
 }
 
 .todo-item {
