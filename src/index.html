@@ -11,7 +11,11 @@
       <div class="sidebar"></div>
       <div class="todo-area">
         <dialog id="addTask">
-          <form method="dialog">
+          <div class="titleBar">
+            <p>Add a new task</p>
+            <button>X</button>
+          </div>
+          <form method="dialog" class="dialog">
             <label for="desc">Task:
             </label>
             <input type="text" id="desc" name="desc"></input>

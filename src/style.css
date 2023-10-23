@@ -71,3 +71,32 @@ main {
   color: #ffffff;
   font-size: 18px;
 }
+
+.titleBar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #cfbefe;
+  padding: 0.5rem;
+}
+
+#addTask {
+  position: fixed;
+  top: 30%;
+  margin: 0 auto;
+  border: none;
+  background-color: #f2effe;
+  width: 25rem;
+  height: 15rem;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+}
+
+form.dialog {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+  align-items: flex-start;
+  padding-top: 2rem;
+}
