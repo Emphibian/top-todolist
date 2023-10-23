@@ -88,8 +88,6 @@ main {
   width: 25rem;
   height: 15rem;
   border-radius: 3px;
-  display: flex;
-  flex-direction: column;
 }
 
 form.dialog {

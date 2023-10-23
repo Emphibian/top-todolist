@@ -63,6 +63,14 @@ function renderLists(lists) {
 
 }
 
+function closeDialog() {
+  let dialog = document.querySelector('#addTask');
+  dialog.close();
+}
+
+let closeButton = document.querySelector('dialog button');
+closeButton.addEventListener('click', closeDialog);
+
 renderLists(listsArray);
 renderTodoListItems(list);
 renderAddTodoListItemsButton(list);
