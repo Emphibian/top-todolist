@@ -71,6 +71,14 @@ function closeDialog() {
 let closeButton = document.querySelector('dialog button');
 closeButton.addEventListener('click', closeDialog);
 
+let addTaskBtn = document.querySelector('form button');
+addTaskBtn.addEventListener('click', () => {
+  let desc = document.querySelector('input#desc');
+  list.createListItem(desc.value, '');
+  renderTodoListItems(list);
+  renderAddTodoListItemsButton(list);
+});
+
 renderLists(listsArray);
 renderTodoListItems(list);
 renderAddTodoListItemsButton(list);
