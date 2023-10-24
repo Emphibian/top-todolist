@@ -98,3 +98,9 @@ form.dialog {
   align-items: flex-start;
   padding-top: 2rem;
 }
+
+.titleBar button {
+  border: none;
+  background-color: inherit;
+  font-size: 14px;
+}
