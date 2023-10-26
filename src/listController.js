@@ -1,5 +1,5 @@
-import "./style.css";
-import createAddButton from "./addButton.js";
+import './style.css';
+import createAddButton from './addButton.js';
 
 export default function createListController() {
   let curList;
@@ -11,18 +11,18 @@ export default function createListController() {
   function render() {
     if (!curList) return;
 
-    let todoListDiv = document.querySelector(".todo-list");
-    todoListDiv.innerHTML = "";
+    let todoListDiv = document.querySelector('.todo-list');
+    todoListDiv.innerHTML = '';
     curList.getItems().forEach((item, index) => {
-      const listItemDiv = document.createElement("div");
-      listItemDiv.classList.add("todo-item");
+      const listItemDiv = document.createElement('div');
+      listItemDiv.classList.add('todo-item');
 
-      const titlePara = document.createElement("p");
+      const titlePara = document.createElement('p');
       titlePara.textContent = item.title;
 
-      const doneCheckbox = document.createElement("input");
-      doneCheckbox.type = "checkbox";
-      doneCheckbox.addEventListener("click", () => {
+      const doneCheckbox = document.createElement('input');
+      doneCheckbox.type = 'checkbox';
+      doneCheckbox.addEventListener('click', () => {
         curList.markDone(index);
         render();
       });
