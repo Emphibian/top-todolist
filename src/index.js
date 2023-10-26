@@ -35,6 +35,5 @@ let addTaskBtn = document.querySelector('form button');
 addTaskBtn.addEventListener('click', () => {
   let desc = document.querySelector('input#desc');
   list.createListItem(desc.value, '');
-  renderTodoListItems(list);
-  renderAddTodoListItemsButton(list);
+  listController.render();
 });
