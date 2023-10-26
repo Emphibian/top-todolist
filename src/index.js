@@ -34,6 +34,5 @@ closeButton.addEventListener('click', closeDialog);
 let addTaskBtn = document.querySelector('form button');
 addTaskBtn.addEventListener('click', () => {
   let desc = document.querySelector('input#desc');
-  list.createListItem(desc.value, '');
-  listController.render();
+  listController.addItem(desc.value, '');
 });

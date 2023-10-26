@@ -37,8 +37,14 @@ export default function createListController() {
     });
   }
 
+  function addItem(title, desc) {
+    curList.createListItem(title, desc);
+    render();
+  }
+
   return {
     setList,
     render,
+    addItem,
   };
 }
