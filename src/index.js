@@ -3,8 +3,8 @@ import createProjectController from './projectController.js';
 import createListController from './listController.js';
 import createList from './list.js';
 
-const projectController = createProjectController();
 const listController = createListController();
+const projectController = createProjectController(listController);
 
 const listsArray = [];
 const list = createList('Default');

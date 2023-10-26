@@ -1,4 +1,4 @@
-export default function createProjectController() {
+export default function createProjectController(listController) {
   function render(projectArray) {
     projectArray.forEach((project) => {
       const sidebarDiv = document.querySelector(".sidebar");
@@ -6,8 +6,8 @@ export default function createProjectController() {
       listButton.textContent = project.title;
 
       listButton.addEventListener("click", () => {
-        renderTodoListItems(list);
-        renderAddTodoListItemsButton(list);
+        listController.setList(project);
+        listController.render();
       });
 
       sidebarDiv.appendChild(listButton);
