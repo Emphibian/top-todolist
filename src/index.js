@@ -24,7 +24,7 @@ listController.render();
 projectController.render(listsArray);
 
 function closeDialog() {
-  let dialog = document.querySelector('#addTask');
+  let dialog = document.querySelector('#add-task');
   dialog.close();
 }
 

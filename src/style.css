@@ -72,14 +72,15 @@ main {
   font-size: 18px;
 }
 
-.titleBar {
+.title-bar {
+  grid-column: 1 / 3;
   display: flex;
   justify-content: space-between;
   background-color: #cfbefe;
   padding: 0.5rem;
 }
 
-#addTask {
+#add-task {
   position: fixed;
   top: 30%;
   margin: 0 auto;
@@ -88,6 +89,17 @@ main {
   width: 25rem;
   height: 15rem;
   border-radius: 3px;
+}
+
+.dialog-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+}
+
+.dialog-side {
+  border-right: 1px solid;
 }
 
 form.dialog {
@@ -99,7 +111,7 @@ form.dialog {
   padding-top: 2rem;
 }
 
-.titleBar button {
+.title-bar button {
   border: none;
   background-color: inherit;
   font-size: 14px;

@@ -3,7 +3,7 @@ export default function createAddButton() {
   addButton.textContent = '+';
 
   addButton.addEventListener('click', () => {
-    const dialogBox = document.querySelector('#addTask');
+    const dialogBox = document.querySelector('#add-task');
     dialogBox.showModal();
   });
 
