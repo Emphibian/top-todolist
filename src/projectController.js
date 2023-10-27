@@ -1,5 +1,7 @@
 export default function createProjectController(listController) {
-  function render(projectArray) {
+  const projectArray = [];
+
+  function render() {
     projectArray.forEach((project) => {
       const sidebarDiv = document.querySelector('.sidebar');
       const listButton = document.createElement('button');
@@ -14,7 +16,12 @@ export default function createProjectController(listController) {
     });
   }
 
+  function addList(listObj) {
+    projectArray.push(listObj);
+  }
+
   return {
     render,
+    addList,
   };
 }

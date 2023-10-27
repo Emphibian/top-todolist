@@ -1,4 +1,4 @@
-export default function createDialogController() {
+export default function createDialogController(addTask, addProject) {
   function open() {
     const dialog = document.querySelector('dialog');
     const dialogSideDiv = document.querySelector('.dialog-side');

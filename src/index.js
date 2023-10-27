@@ -6,7 +6,6 @@ import createList from './list.js';
 const listController = createListController();
 const projectController = createProjectController(listController);
 
-const listsArray = [];
 const list = createList('Default');
 list.createListItem('Do this', '');
 list.createListItem('Do that', '');
@@ -15,13 +14,13 @@ const list2 = createList('test');
 list2.createListItem("don't do this at work!", '');
 list2.createListItem("definitely don't do this", '');
 
-listsArray.push(list);
-listsArray.push(list2);
+projectController.addList(list);
+projectController.addList(list2);
 
 listController.setList(list);
 listController.render();
 
-projectController.render(listsArray);
+projectController.render();
 
 function closeDialog() {
   let dialog = document.querySelector('#add-task');
