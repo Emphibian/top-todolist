@@ -6,19 +6,24 @@ export default function createDialogController() {
 
     const taskButton = document.createElement('button');
     taskButton.textContent = 'Task';
-    taskButton.addEventListener('click', createTaskForm);
+    taskButton.addEventListener('click', () => createForm('task'));
+
+    const projectButton = document.createElement('button');
+    projectButton.textContent = 'Project';
+    projectButton.addEventListener('click', () => createForm('project'));
 
     dialogSideDiv.appendChild(taskButton);
+    dialogSideDiv.appendChild(projectButton);
     dialog.showModal();
   }
 
-  function createTaskForm() {
+  function createForm(type) {
     const form = document.querySelector('form.dialog');
     form.innerHTML = '';
 
     const label = document.createElement('label');
     label.htmlFor = 'desc';
-    label.textContent = 'Task:';
+    label.textContent = type === 'task' ? 'Task:' : 'Project:';
 
     const inputDesc = document.createElement('input');
     inputDesc.type = 'text';
@@ -26,7 +31,7 @@ export default function createDialogController() {
     inputDesc.name = 'desc';
 
     const button = document.createElement('button');
-    button.textContent = 'Add task';
+    button.textContent = `Add ${type}`;
 
     form.appendChild(label);
     form.appendChild(inputDesc);
