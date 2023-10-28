@@ -2,8 +2,10 @@ export default function createProjectController(listController) {
   const projectArray = [];
 
   function render() {
+    const sidebarDiv = document.querySelector('.sidebar');
+    sidebarDiv.innerHTML = '';
+
     projectArray.forEach((project) => {
-      const sidebarDiv = document.querySelector('.sidebar');
       const listButton = document.createElement('button');
       listButton.textContent = project.title;
 
@@ -18,6 +20,7 @@ export default function createProjectController(listController) {
 
   function addList(listObj) {
     projectArray.push(listObj);
+    render();
   }
 
   return {

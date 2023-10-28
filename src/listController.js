@@ -1,5 +1,4 @@
 import './style.css';
-import createAddButton from './addButton.js';
 
 export default function createListController() {
   let curList;
@@ -27,13 +26,10 @@ export default function createListController() {
         render();
       });
 
-      const addButton = createAddButton();
-
       listItemDiv.appendChild(doneCheckbox);
       listItemDiv.appendChild(titlePara);
 
       todoListDiv.appendChild(listItemDiv);
-      todoListDiv.appendChild(addButton);
     });
   }
 
