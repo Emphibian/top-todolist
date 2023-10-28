@@ -1,58 +1,37 @@
-import "./style.css";
-import createList from "./list.js";
+import './style.css';
+import createProjectController from './projectController.js';
+import createListController from './listController.js';
+import createList from './list.js';
 
-const todoListDiv = document.querySelector(".todo-list");
-const sidebarDiv = document.querySelector(".sidebar");
+const listController = createListController();
+const projectController = createProjectController(listController);
 
-const listsArray = [];
-const list = createList("Default");
-list.createListItem("Do this", "");
-list.createListItem("Do that", "");
+const list = createList('Default');
+list.createListItem('Do this', '');
+list.createListItem('Do that', '');
 
-const list2 = createList("test");
-list2.createListItem("don't do this at work!", "");
-list2.createListItem("definitely don't do this", "")
+const list2 = createList('test');
+list2.createListItem("don't do this at work!", '');
+list2.createListItem("definitely don't do this", '');
 
-listsArray.push(list);
-listsArray.push(list2);
+projectController.addList(list);
+projectController.addList(list2);
 
-function renderTodoListItems(listObj) {
-  todoListDiv.innerHTML = "";
-  const listItems = listObj.getItems();
-  listItems.forEach((item, index) => {
-    const listItemDiv = document.createElement("div");
-    listItemDiv.classList.add("todo-item");
+listController.setList(list);
+listController.render();
 
-    const titlePara = document.createElement("p");
-    titlePara.textContent = item.title;
+projectController.render();
 
-    const doneCheckbox = document.createElement("input");
-    doneCheckbox.type = "checkbox";
-    doneCheckbox.addEventListener("click", () => {
-      listObj.markDone(index);
-      renderTodoListItems(listObj);
-    });
-
-    listItemDiv.appendChild(doneCheckbox);
-    listItemDiv.appendChild(titlePara);
-
-    todoListDiv.appendChild(listItemDiv);
-  });
+function closeDialog() {
+  let dialog = document.querySelector('#add-task');
+  dialog.close();
 }
 
-function renderLists(lists) {
-  lists.forEach((list) => {
-    const listButton = document.createElement("button");
-    listButton.textContent = list.title;
+let closeButton = document.querySelector('dialog button');
+closeButton.addEventListener('click', closeDialog);
 
-    listButton.addEventListener("click", () => {
-      renderTodoListItems(list);
-    });
-
-    sidebarDiv.appendChild(listButton);
-  });
-
-}
-
-renderLists(listsArray);
-renderTodoListItems(list);
+let addTaskBtn = document.querySelector('form button');
+addTaskBtn.addEventListener('click', () => {
+  let desc = document.querySelector('input#desc');
+  listController.addItem(desc.value, '');
+});

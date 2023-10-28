@@ -43,6 +43,7 @@ main {
   gap: 1rem;
   padding: 7rem 0;
   position: relative;
+  height: 100%;
 }
 
 .todo-item {
@@ -69,4 +70,49 @@ main {
   background-color: #6640d8;
   color: #ffffff;
   font-size: 18px;
+}
+
+.title-bar {
+  grid-column: 1 / 3;
+  display: flex;
+  justify-content: space-between;
+  background-color: #cfbefe;
+  padding: 0.5rem;
+}
+
+#add-task {
+  position: fixed;
+  top: 30%;
+  margin: 0 auto;
+  border: none;
+  background-color: #f2effe;
+  width: 25rem;
+  height: 15rem;
+  border-radius: 3px;
+}
+
+.dialog-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto 1fr;
+  height: 100%;
+}
+
+.dialog-side {
+  border-right: 1px solid;
+}
+
+form.dialog {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+  align-items: flex-start;
+  padding-top: 2rem;
+}
+
+.title-bar button {
+  border: none;
+  background-color: inherit;
+  font-size: 14px;
 }
