@@ -22,6 +22,7 @@ export default function createDialogController(addTask, addProject) {
     const form = document.querySelector('form.dialog');
     form.innerHTML = '';
 
+    const inputDiv = document.createElement('div');
     const label = document.createElement('label');
     label.htmlFor = 'desc';
     label.textContent = type === 'task' ? 'Task:' : 'Project:';
@@ -45,8 +46,9 @@ export default function createDialogController(addTask, addProject) {
       });
     }
 
-    form.appendChild(label);
-    form.appendChild(inputDesc);
+    inputDiv.appendChild(label);
+    inputDiv.appendChild(inputDesc);
+    form.appendChild(inputDiv);
     form.appendChild(button);
   }
 
