@@ -52,12 +52,17 @@ main {
   align-items: center;
   margin: 0 auto;
   padding-left: 1.5rem;
+  padding-right: 1.5rem;
   min-width: 85%;
   height: 3rem;
   border-radius: 8px;
   background-color: #cfbefe;
   font-size: 14px;
 }
+
+.todo-item p:nth-child(2) {
+  flex: 1;
+} 
 
 body > button {
   position: absolute;
