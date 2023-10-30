@@ -16,6 +16,12 @@ export default function createListController() {
       const listItemDiv = document.createElement('div');
       listItemDiv.classList.add('todo-item');
 
+      const dueDatePara = document.createElement('p');
+      dueDatePara.textContent = new Intl.DateTimeFormat('en-US', {
+        month: 'short',
+        day: 'numeric',
+      }).format(item.dueDate);
+
       const titlePara = document.createElement('p');
       titlePara.textContent = item.title;
 
@@ -28,6 +34,7 @@ export default function createListController() {
 
       listItemDiv.appendChild(doneCheckbox);
       listItemDiv.appendChild(titlePara);
+      listItemDiv.appendChild(dueDatePara);
 
       todoListDiv.appendChild(listItemDiv);
     });
