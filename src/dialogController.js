@@ -1,3 +1,4 @@
+import createList from './list.js';
 export default function createDialogController(addTask, addProject) {
   function open() {
     const dialog = document.querySelector('dialog');
@@ -21,6 +22,7 @@ export default function createDialogController(addTask, addProject) {
     const form = document.querySelector('form.dialog');
     form.innerHTML = '';
 
+    const inputDiv = document.createElement('div');
     const label = document.createElement('label');
     label.htmlFor = 'desc';
     label.textContent = type === 'task' ? 'Task:' : 'Project:';
@@ -33,8 +35,20 @@ export default function createDialogController(addTask, addProject) {
     const button = document.createElement('button');
     button.textContent = `Add ${type}`;
 
-    form.appendChild(label);
-    form.appendChild(inputDesc);
+    if (type === 'task') {
+      button.addEventListener('click', () => {
+        addTask(inputDesc.value);
+      });
+    } else {
+      button.addEventListener('click', () => {
+        const listObj = createList(inputDesc.value);
+        addProject(listObj);
+      });
+    }
+
+    inputDiv.appendChild(label);
+    inputDiv.appendChild(inputDesc);
+    form.appendChild(inputDiv);
     form.appendChild(button);
   }
 
