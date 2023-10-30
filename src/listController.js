@@ -22,6 +22,9 @@ export default function createListController() {
         day: 'numeric',
       }).format(item.dueDate);
 
+      const priorityPara = document.createElement('p');
+      priorityPara.textContent = item.priority;
+
       const titlePara = document.createElement('p');
       titlePara.textContent = item.title;
 
@@ -35,6 +38,7 @@ export default function createListController() {
       listItemDiv.appendChild(doneCheckbox);
       listItemDiv.appendChild(titlePara);
       listItemDiv.appendChild(dueDatePara);
+      listItemDiv.appendChild(priorityPara);
 
       todoListDiv.appendChild(listItemDiv);
     });
