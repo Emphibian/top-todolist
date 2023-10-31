@@ -7,7 +7,7 @@ export default function createDialogController(addTask, addProject) {
 
     const taskButton = document.createElement('button');
     taskButton.textContent = 'Task';
-    taskButton.addEventListener('click', () => createForm('task'));
+    taskButton.addEventListener('click', () => createTaskForm());
 
     const projectButton = document.createElement('button');
     projectButton.textContent = 'Project';
@@ -48,6 +48,54 @@ export default function createDialogController(addTask, addProject) {
 
     inputDiv.appendChild(label);
     inputDiv.appendChild(inputDesc);
+    form.appendChild(inputDiv);
+    form.appendChild(button);
+  }
+
+  function createTaskForm() {
+    const form = document.querySelector('form.dialog');
+    form.innerHTML = '';
+
+    const inputDiv = document.createElement('div');
+    const labelDesc = document.createElement('label');
+    labelDesc.htmlFor = 'desc';
+    labelDesc.textContent = 'Task:';
+
+    const inputDesc = document.createElement('input');
+    inputDesc.type = 'text';
+    inputDesc.id = 'desc';
+    inputDesc.name = 'desc';
+
+    const labelDueDate = document.createElement('label');
+    labelDueDate.htmlFor = 'due-date';
+    labelDueDate.textContent = 'Due date';
+
+    const inputDueDate = document.createElement('input');
+    inputDueDate.type = 'date';
+    inputDueDate.id = 'due-date';
+    inputDueDate.name = 'due-date';
+
+    const labelPriority = document.createElement('label');
+    labelPriority.htmlFor = 'priority';
+    labelPriority.textContent = 'Priority:';
+
+    const inputPriority = document.createElement('select');
+    inputPriority.id = 'priority';
+    inputPriority.name = 'priority';
+
+    const priorityOptions = ['Low', 'Medium', 'High'];
+    priorityOptions.forEach((priority) => {
+      const option = document.createElement('option');
+      option.value = priority;
+      option.text = priority;
+
+      inputPriority.add(option);
+    });
+
+    const button = document.createElement('button');
+    button.textContent = 'Add Task';
+
+    inputDiv.append(labelDesc, inputDesc, labelDueDate, inputDueDate, labelPriority, inputPriority);
     form.appendChild(inputDiv);
     form.appendChild(button);
   }
