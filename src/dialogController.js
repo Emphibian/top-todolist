@@ -1,4 +1,5 @@
 import createList from './list.js';
+
 export default function createDialogController(addTask, addProject) {
   function open() {
     const dialog = document.querySelector('dialog');
@@ -94,6 +95,10 @@ export default function createDialogController(addTask, addProject) {
 
     const button = document.createElement('button');
     button.textContent = 'Add Task';
+
+    button.addEventListener('click', () => {
+      addTask(inputDesc.value, new Date(inputDueDate.value), inputPriority.value);
+    });
 
     inputDiv.append(labelDesc, inputDesc, labelDueDate, inputDueDate, labelPriority, inputPriority);
     form.appendChild(inputDiv);

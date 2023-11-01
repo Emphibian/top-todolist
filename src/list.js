@@ -10,8 +10,8 @@ export default function createList(title) {
     listItems.splice(index, 1);
   }
 
-  function createListItem(title, desc) {
-    const item = createTodoItem(title, desc);
+  function createListItem(desc, dueDate, priority) {
+    const item = createTodoItem(desc, dueDate, priority);
     addItem(item);
   }
 

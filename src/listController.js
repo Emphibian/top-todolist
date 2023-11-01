@@ -25,8 +25,8 @@ export default function createListController() {
       const priorityPara = document.createElement('p');
       priorityPara.textContent = item.priority;
 
-      const titlePara = document.createElement('p');
-      titlePara.textContent = item.title;
+      const descPara = document.createElement('p');
+      descPara.textContent = item.desc;
 
       const doneCheckbox = document.createElement('input');
       doneCheckbox.type = 'checkbox';
@@ -36,7 +36,7 @@ export default function createListController() {
       });
 
       listItemDiv.appendChild(doneCheckbox);
-      listItemDiv.appendChild(titlePara);
+      listItemDiv.appendChild(descPara);
       listItemDiv.appendChild(dueDatePara);
       listItemDiv.appendChild(priorityPara);
 
@@ -44,8 +44,8 @@ export default function createListController() {
     });
   }
 
-  function addItem(title, desc) {
-    curList.createListItem(title, desc);
+  function addItem(desc, dueDate, priority) {
+    curList.createListItem(desc, dueDate, priority);
     render();
   }
 
