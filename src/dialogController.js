@@ -12,21 +12,21 @@ export default function createDialogController(addTask, addProject) {
 
     const projectButton = document.createElement('button');
     projectButton.textContent = 'Project';
-    projectButton.addEventListener('click', () => createForm('project'));
+    projectButton.addEventListener('click', () => createProjectForm('project'));
 
     dialogSideDiv.appendChild(taskButton);
     dialogSideDiv.appendChild(projectButton);
     dialog.showModal();
   }
 
-  function createForm(type) {
+  function createProjectForm() {
     const form = document.querySelector('form.dialog');
     form.innerHTML = '';
 
     const inputDiv = document.createElement('div');
     const label = document.createElement('label');
     label.htmlFor = 'desc';
-    label.textContent = type === 'task' ? 'Task:' : 'Project:';
+    label.textContent = 'Project:';
 
     const inputDesc = document.createElement('input');
     inputDesc.type = 'text';
@@ -34,18 +34,12 @@ export default function createDialogController(addTask, addProject) {
     inputDesc.name = 'desc';
 
     const button = document.createElement('button');
-    button.textContent = `Add ${type}`;
+    button.textContent = 'Add project';
 
-    if (type === 'task') {
-      button.addEventListener('click', () => {
-        addTask(inputDesc.value);
-      });
-    } else {
-      button.addEventListener('click', () => {
-        const listObj = createList(inputDesc.value);
-        addProject(listObj);
-      });
-    }
+    button.addEventListener('click', () => {
+      const listObj = createList(inputDesc.value);
+      addProject(listObj);
+    });
 
     inputDiv.appendChild(label);
     inputDiv.appendChild(inputDesc);
@@ -97,10 +91,21 @@ export default function createDialogController(addTask, addProject) {
     button.textContent = 'Add Task';
 
     button.addEventListener('click', () => {
-      addTask(inputDesc.value, new Date(inputDueDate.value), inputPriority.value);
+      addTask(
+        inputDesc.value,
+        new Date(inputDueDate.value),
+        inputPriority.value,
+      );
     });
 
-    inputDiv.append(labelDesc, inputDesc, labelDueDate, inputDueDate, labelPriority, inputPriority);
+    inputDiv.append(
+      labelDesc,
+      inputDesc,
+      labelDueDate,
+      inputDueDate,
+      labelPriority,
+      inputPriority,
+    );
     form.appendChild(inputDiv);
     form.appendChild(button);
   }
