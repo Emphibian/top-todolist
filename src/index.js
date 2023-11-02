@@ -8,7 +8,7 @@ import createAddButton from './addButton.js';
 const listController = createListController();
 const projectController = createProjectController(listController);
 const dialogController = createDialogController(
-  (desc) => listController.addItem(desc, ''),
+  (desc, dueDate, priority) => listController.addItem(desc, dueDate, priority),
   (list) => projectController.addList(list),
 );
 

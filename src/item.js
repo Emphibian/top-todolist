@@ -1,6 +1,11 @@
-export default function createTodoItem(title, desc) {
+export default function createTodoItem(
+  desc,
+  dueDate = new Date(),
+  priority = 'low',
+) {
   return {
-    title,
     desc,
+    dueDate,
+    priority,
   };
 }

@@ -52,12 +52,17 @@ main {
   align-items: center;
   margin: 0 auto;
   padding-left: 1.5rem;
+  padding-right: 1.5rem;
   min-width: 85%;
   height: 3rem;
   border-radius: 8px;
   background-color: #cfbefe;
   font-size: 14px;
 }
+
+.todo-item p:nth-child(2) {
+  flex: 1;
+} 
 
 body > button {
   position: absolute;
@@ -116,15 +121,16 @@ form.dialog {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 1rem;
+  justify-content: space-between;
   padding-top: 2rem;
 }
 
 form.dialog > div {
   font-family: Roboto, sans-serif;
   width: 100%;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 1rem;
 }
 
 form.dialog > button {
