@@ -15,6 +15,10 @@ export default function createList(title) {
     addItem(item);
   }
 
+  function deleteListItem(index) {
+    listItems.splice(index, 1);
+  }
+
   function getItems() {
     return [...listItems];
   }
@@ -24,5 +28,6 @@ export default function createList(title) {
     createListItem,
     markDone,
     getItems,
+    deleteListItem,
   };
 }

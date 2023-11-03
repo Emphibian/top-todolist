@@ -64,6 +64,9 @@ main {
   flex: 1;
 } 
 
+.todo-item > button > img {
+  width: 2rem;
+}
 body > button {
   position: absolute;
   bottom: 1rem;

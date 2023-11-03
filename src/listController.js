@@ -1,4 +1,5 @@
 import './style.css';
+import trashCan from './assets/trash-can-outline.svg';
 
 export default function createListController() {
   let curList;
@@ -35,10 +36,20 @@ export default function createListController() {
         render();
       });
 
+      const deleteButton = document.createElement('button');
+      const deleteButtonImage = new Image();
+      deleteButtonImage.src = trashCan;
+      deleteButton.appendChild(deleteButtonImage);
+      deleteButton.addEventListener('click', () => {
+        curList.deleteListItem(index);
+        render();
+      });
+
       listItemDiv.appendChild(doneCheckbox);
       listItemDiv.appendChild(descPara);
       listItemDiv.appendChild(dueDatePara);
       listItemDiv.appendChild(priorityPara);
+      listItemDiv.appendChild(deleteButton);
 
       todoListDiv.appendChild(listItemDiv);
     });
