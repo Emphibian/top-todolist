@@ -53,6 +53,15 @@ export default function createListController() {
 
       todoListDiv.appendChild(listItemDiv);
     });
+
+    const completedDiv = document.createElement('div');
+    const completedHeading = document.createElement('h2');
+    completedHeading.textContent = 'Completed Tasks';
+    const completedPara = document.createElement('p');
+    completedPara.textContent = 'Completed tasks show up here';
+
+    completedDiv.append(completedHeading, completedPara);
+    todoListDiv.appendChild(completedDiv);
   }
 
   function addItem(desc, dueDate, priority) {
