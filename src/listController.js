@@ -55,6 +55,7 @@ export default function createListController() {
     });
 
     const completedDiv = document.createElement('div');
+    completedDiv.classList.add('completed');
     const completedHeading = document.createElement('h2');
     completedHeading.textContent = 'Completed Tasks';
     const completedPara = document.createElement('p');

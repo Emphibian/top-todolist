@@ -67,6 +67,13 @@ main {
 .todo-item > button > img {
   width: 2rem;
 }
+
+.completed {
+  margin: 0 auto;
+  text-align: center;
+  padding: 5rem 0;
+}
+
 body > button {
   position: absolute;
   bottom: 1rem;
