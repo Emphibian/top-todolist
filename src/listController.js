@@ -60,8 +60,21 @@ export default function createListController() {
     completedHeading.textContent = 'Completed Tasks';
     const completedPara = document.createElement('p');
     completedPara.textContent = 'Completed tasks show up here';
-
     completedDiv.append(completedHeading, completedPara);
+
+    curList.getCompletedItems().forEach((item) => {
+      const listItemDiv = document.createElement('div');
+      
+      const descPara = document.createElement('p');
+      descPara.textContent = item.desc;
+
+      const undoButton = document.createElement('button');
+      undoButton.textContent = 'undo';
+
+      listItemDiv.append(descPara, undoButton);
+      completedDiv.append(listItemDiv);
+    });
+
     todoListDiv.appendChild(completedDiv);
   }
 
