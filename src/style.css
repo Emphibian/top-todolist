@@ -43,7 +43,7 @@ main {
   gap: 1rem;
   padding: 7rem 0;
   position: relative;
-  height: 100%;
+  min-height: 50%;
 }
 
 .todo-item {
@@ -68,10 +68,25 @@ main {
   width: 2rem;
 }
 
-.completed {
+.completed-div {
   margin: 0 auto;
   text-align: center;
-  padding: 5rem 0;
+  padding: 0 5rem;
+}
+
+.completed-item {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin: 1rem auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  min-width: 85%;
+  height: 3rem;
+  border-radius: 8px;
+  background-color: #cfbefe;
+  font-size: 14px;
+  justify-content: space-between;
 }
 
 body > button {

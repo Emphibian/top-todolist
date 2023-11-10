@@ -11,7 +11,8 @@ export default function createListController() {
   function render() {
     if (!curList) return;
 
-    let todoListDiv = document.querySelector('.todo-list');
+    const todoListDiv = document.querySelector('.todo-list');
+    const todoAreaDiv = document.querySelector('.todo-area');
     todoListDiv.innerHTML = '';
     curList.getItems().forEach((item, index) => {
       const listItemDiv = document.createElement('div');
@@ -54,8 +55,8 @@ export default function createListController() {
       todoListDiv.appendChild(listItemDiv);
     });
 
-    const completedDiv = document.createElement('div');
-    completedDiv.classList.add('completed');
+    const completedDiv = document.querySelector('.completed-div');
+    completedDiv.textContent = '';
     const completedHeading = document.createElement('h2');
     completedHeading.textContent = 'Completed Tasks';
     const completedPara = document.createElement('p');
@@ -64,7 +65,8 @@ export default function createListController() {
 
     curList.getCompletedItems().forEach((item) => {
       const listItemDiv = document.createElement('div');
-      
+      listItemDiv.classList.add('completed-item');
+
       const descPara = document.createElement('p');
       descPara.textContent = item.desc;
 
@@ -75,7 +77,7 @@ export default function createListController() {
       completedDiv.append(listItemDiv);
     });
 
-    todoListDiv.appendChild(completedDiv);
+    todoAreaDiv.appendChild(completedDiv);
   }
 
   function addItem(desc, dueDate, priority) {
