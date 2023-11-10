@@ -89,6 +89,12 @@ main {
   justify-content: space-between;
 }
 
+.completed-item > button {
+  border: 1px solid;
+  font-weight: 500;
+  padding: 0.1rem;
+}
+
 body > button {
   position: absolute;
   bottom: 1rem;
