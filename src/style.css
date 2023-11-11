@@ -64,7 +64,8 @@ main {
   flex: 1;
 } 
 
-.todo-item > button > img {
+.todo-item > button > img,
+.completed-item > button > img {
   width: 2rem;
 }
 

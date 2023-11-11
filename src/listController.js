@@ -77,7 +77,16 @@ export default function createListController() {
         render();
       });
 
-      listItemDiv.append(descPara, undoButton);
+      const deleteButton = document.createElement('button');
+      const deleteButtonImage = new Image();
+      deleteButtonImage.src = trashCan;
+      deleteButton.appendChild(deleteButtonImage);
+      deleteButton.addEventListener('click', () => {
+        curList.deleteDoneItem(index);
+        render();
+      });
+
+      listItemDiv.append(descPara, undoButton, deleteButton);
       completedDiv.append(listItemDiv);
     });
 
