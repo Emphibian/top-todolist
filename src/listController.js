@@ -1,5 +1,6 @@
 import './style.css';
 import trashCan from './assets/trash-can-outline.svg';
+import undoImg from './assets/undo-variant.svg'
 
 export default function createListController() {
   let curList;
@@ -71,7 +72,9 @@ export default function createListController() {
       descPara.textContent = item.desc;
 
       const undoButton = document.createElement('button');
-      undoButton.textContent = 'undo';
+      const undoImage = new Image();
+      undoImage.src = undoImg;
+      undoButton.appendChild(undoImage);
       undoButton.addEventListener('click', () => {
         curList.undoListItem(index);
         render();
