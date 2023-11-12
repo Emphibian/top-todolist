@@ -62,7 +62,7 @@ main {
 
 .todo-item p:nth-child(2) {
   flex: 1;
-} 
+}
 
 .todo-item > button > img,
 .completed-item > button > img {
@@ -178,13 +178,13 @@ form.dialog > button {
 }
 
 .low {
-  border-left: solid green;
+  border-left: 5px solid #32f224;
 }
 
 .medium {
-  border-left: solid #e6c411;
+  border-left: 5px solid #f2c824;
 }
 
 .high {
-  border-left: solid #f22424;
+  border-left: 5px solid #f22424;
 }
