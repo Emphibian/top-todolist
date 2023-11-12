@@ -18,15 +18,13 @@ export default function createListController() {
     curList.getItems().forEach((item, index) => {
       const listItemDiv = document.createElement('div');
       listItemDiv.classList.add('todo-item');
+      listItemDiv.classList.add(item.priority.toLowerCase());
 
       const dueDatePara = document.createElement('p');
       dueDatePara.textContent = new Intl.DateTimeFormat('en-US', {
         month: 'short',
         day: 'numeric',
       }).format(item.dueDate);
-
-      const priorityPara = document.createElement('p');
-      priorityPara.textContent = item.priority;
 
       const descPara = document.createElement('p');
       descPara.textContent = item.desc;
@@ -50,7 +48,6 @@ export default function createListController() {
       listItemDiv.appendChild(doneCheckbox);
       listItemDiv.appendChild(descPara);
       listItemDiv.appendChild(dueDatePara);
-      listItemDiv.appendChild(priorityPara);
       listItemDiv.appendChild(deleteButton);
 
       todoListDiv.appendChild(listItemDiv);

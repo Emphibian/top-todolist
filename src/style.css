@@ -176,3 +176,15 @@ form.dialog > button {
   background-color: inherit;
   font-size: 14px;
 }
+
+.low {
+  border-left: solid green;
+}
+
+.medium {
+  border-left: solid #e6c411;
+}
+
+.high {
+  border-left: solid #f22424;
+}
