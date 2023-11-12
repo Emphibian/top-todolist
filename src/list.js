@@ -1,13 +1,14 @@
 import createTodoItem from './item.js';
 export default function createList(title) {
   const listItems = [];
+  const doneItems = [];
 
   function addItem(itemObj) {
     listItems.push(itemObj);
   }
 
   function markDone(index) {
-    listItems.splice(index, 1);
+    doneItems.unshift(...listItems.splice(index, 1));
   }
 
   function createListItem(desc, dueDate, priority) {
@@ -19,8 +20,20 @@ export default function createList(title) {
     listItems.splice(index, 1);
   }
 
+  function deleteDoneItem(index) {
+    doneItems.splice(index, 1);
+  }
+
+  function undoListItem(index) {
+    addItem(...doneItems.splice(index, 1));
+  }
+
   function getItems() {
     return [...listItems];
+  }
+
+  function getCompletedItems() {
+    return [...doneItems];
   }
 
   return {
@@ -28,6 +41,9 @@ export default function createList(title) {
     createListItem,
     markDone,
     getItems,
+    getCompletedItems,
     deleteListItem,
+    undoListItem,
+    deleteDoneItem,
   };
 }

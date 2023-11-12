@@ -43,7 +43,7 @@ main {
   gap: 1rem;
   padding: 7rem 0;
   position: relative;
-  height: 100%;
+  min-height: 50%;
 }
 
 .todo-item {
@@ -64,9 +64,38 @@ main {
   flex: 1;
 } 
 
-.todo-item > button > img {
+.todo-item > button > img,
+.completed-item > button > img {
   width: 2rem;
 }
+
+.completed-div {
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 5rem;
+}
+
+.completed-item {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin: 1rem auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  min-width: 85%;
+  height: 3rem;
+  border-radius: 8px;
+  background-color: #cfbefe;
+  font-size: 14px;
+  justify-content: space-between;
+}
+
+.completed-item > button {
+  border: 1px solid;
+  font-weight: 500;
+  padding: 0.1rem;
+}
+
 body > button {
   position: absolute;
   bottom: 1rem;
@@ -146,4 +175,16 @@ form.dialog > button {
   border: none;
   background-color: inherit;
   font-size: 14px;
+}
+
+.low {
+  border-left: solid green;
+}
+
+.medium {
+  border-left: solid #e6c411;
+}
+
+.high {
+  border-left: solid #f22424;
 }
