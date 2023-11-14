@@ -41,3 +41,10 @@ function closeDialog() {
 
 let closeButton = document.querySelector('dialog button');
 closeButton.addEventListener('click', closeDialog);
+const isVisible = 'is-visible';
+
+document.addEventListener('keyup', (e) => {
+  if (e.key == 'Escape' && document.querySelector('.modal.is-visible')) {
+    document.querySelector('.modal.is-visible').classList.remove('is-visible');
+  }
+});
