@@ -1,11 +1,14 @@
 import './style.css';
 import createProjectController from './projectController.js';
 import createListController from './listController.js';
-import createDialogController from './dialogController.js';
+import {
+  createDialogController,
+  createDetailDialog,
+} from './dialogController.js';
 import createList from './list.js';
 import createAddButton from './addButton.js';
 
-const listController = createListController();
+const listController = createListController(createDetailDialog);
 const projectController = createProjectController(listController);
 const dialogController = createDialogController(
   (desc, dueDate, priority) => listController.addItem(desc, dueDate, priority),
@@ -38,3 +41,9 @@ function closeDialog() {
 
 let closeButton = document.querySelector('dialog button');
 closeButton.addEventListener('click', closeDialog);
+
+const modalButton = document.querySelector('#modal');
+modalButton.addEventListener('click', () => {
+  const modal = document.querySelector('.modal');
+  modal.classList.add('is-visible');
+});

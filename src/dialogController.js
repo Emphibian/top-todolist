@@ -1,6 +1,7 @@
 import createList from './list.js';
+import './style.css';
 
-export default function createDialogController(addTask, addProject) {
+export function createDialogController(addTask, addProject) {
   function open() {
     const dialog = document.querySelector('dialog');
     const dialogSideDiv = document.querySelector('.dialog-side');
@@ -113,4 +114,20 @@ export default function createDialogController(addTask, addProject) {
   return {
     open,
   };
+}
+
+export function createDetailDialog(desc, dueDate, priority) {
+  const modal = document.querySelector('.modal');
+  modal.classList.add('is-visible')
+  modal.innerHTML = '';
+
+  const dialog = document.createElement('div');
+  const heading = document.createElement('h2');
+  heading.textContent = 'Edit task';
+
+  const para = document.createElement('p');
+  para.textContent = 'Some other para';
+
+  dialog.append(heading, para);
+  modal.append(dialog);
 }

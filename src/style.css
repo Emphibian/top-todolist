@@ -188,3 +188,29 @@ form.dialog > button {
 .high {
   border-left: 5px solid #f22424;
 }
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.modal.is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.dialog {
+  max-width: 700px;
+  max-height: 80%;
+  margin: 1rem auto;
+  height: 10rem;
+  border: 1px solid;
+  background-color: white;
+}
