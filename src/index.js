@@ -41,9 +41,3 @@ function closeDialog() {
 
 let closeButton = document.querySelector('dialog button');
 closeButton.addEventListener('click', closeDialog);
-
-const modalButton = document.querySelector('#modal');
-modalButton.addEventListener('click', () => {
-  const modal = document.querySelector('.modal');
-  modal.classList.add('is-visible');
-});

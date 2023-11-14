@@ -122,12 +122,21 @@ export function createDetailDialog(desc, dueDate, priority) {
   modal.innerHTML = '';
 
   const dialog = document.createElement('div');
+  dialog.classList.add('dialog');
   const heading = document.createElement('h2');
   heading.textContent = 'Edit task';
 
-  const para = document.createElement('p');
-  para.textContent = 'Some other para';
+  const editDiv = document.createElement('div');
+  editDiv.classList.add('edit-div');
+  const inputDesc = document.createElement('input');
+  inputDesc.type = 'text';
+  inputDesc.id = 'desc';
 
-  dialog.append(heading, para);
+  const labelDesc = document.createElement('label');
+  labelDesc.textContent = 'Task: ';
+  labelDesc.for = 'desc';
+
+  editDiv.append(labelDesc, inputDesc);
+  dialog.append(heading, editDiv);
   modal.append(dialog);
 }

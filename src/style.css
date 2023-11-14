@@ -199,6 +199,9 @@ form.dialog > button {
   visibility: hidden;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal.is-visible {
@@ -206,11 +209,23 @@ form.dialog > button {
   opacity: 1;
 }
 
-.dialog {
-  max-width: 700px;
-  max-height: 80%;
-  margin: 1rem auto;
+.modal .dialog {
   height: 10rem;
-  border: 1px solid;
-  background-color: white;
+  width: clamp(200px, 30rem, 50%);
+  font-size: 16px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit-div {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.edit-div input {
+  flex: 1;
 }
