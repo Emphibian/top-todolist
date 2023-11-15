@@ -118,16 +118,24 @@ export function createDialogController(addTask, addProject) {
 
 export function createDetailDialog(desc, dueDate, priority) {
   const modal = document.querySelector('.modal');
-  modal.classList.add('is-visible')
+  modal.classList.add('is-visible');
   modal.innerHTML = '';
 
   const dialog = document.createElement('div');
   dialog.classList.add('dialog');
+  const header = document.createElement('div');
+  header.classList.add('dialog-header');
   const heading = document.createElement('h2');
   heading.textContent = 'Edit task';
+  const closeButton = document.createElement('button');
+  closeButton.textContent = 'x';
+  closeButton.addEventListener('click', () =>
+    modal.classList.remove('is-visible'),
+  );
 
   const editDiv = document.createElement('div');
   editDiv.classList.add('edit-div');
+
   const inputDesc = document.createElement('input');
   inputDesc.type = 'text';
   inputDesc.id = 'desc';
@@ -136,7 +144,25 @@ export function createDetailDialog(desc, dueDate, priority) {
   labelDesc.textContent = 'Task: ';
   labelDesc.for = 'desc';
 
-  editDiv.append(labelDesc, inputDesc);
-  dialog.append(heading, editDiv);
+  const inputDueDate = document.createElement('input');
+  inputDueDate.type = 'date';
+
+  const inputLowPriority = document.createElement('button');
+  inputLowPriority.textContent = 'Low';
+  const inputMediumPriority = document.createElement('button');
+  inputMediumPriority.textContent = 'Medium';
+  const inputHighPriority = document.createElement('button');
+  inputHighPriority.textContent = 'High';
+
+  header.append(heading, closeButton);
+  editDiv.append(
+    labelDesc,
+    inputDesc,
+    inputDueDate,
+    inputLowPriority,
+    inputMediumPriority,
+    inputHighPriority,
+  );
+  dialog.append(header, editDiv);
   modal.append(dialog);
 }

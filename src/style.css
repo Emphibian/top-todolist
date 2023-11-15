@@ -219,13 +219,22 @@ form.dialog > button {
   align-items: center;
 }
 
-.edit-div {
+.edit-div,
+.dialog-header {
   display: flex;
+  width: 100%;
+}
+
+.edit-div {
   gap: 1rem;
   padding: 1rem;
-  width: 100%;
 }
 
 .edit-div input {
   flex: 1;
+}
+
+.dialog-header > h2 {
+  flex: 1;
+  text-align: center;
 }
