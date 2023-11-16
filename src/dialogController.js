@@ -116,7 +116,7 @@ export function createDialogController(addTask, addProject) {
   };
 }
 
-export function createDetailDialog(desc, dueDate, priority) {
+export function createDetailDialog(item, render) {
   const modal = document.querySelector('.modal');
   modal.classList.add('is-visible');
   modal.innerHTML = '';
@@ -139,6 +139,7 @@ export function createDetailDialog(desc, dueDate, priority) {
   const inputDesc = document.createElement('input');
   inputDesc.type = 'text';
   inputDesc.id = 'desc';
+  inputDesc.value = item.desc;
 
   const labelDesc = document.createElement('label');
   labelDesc.textContent = 'Task: ';
@@ -147,12 +148,32 @@ export function createDetailDialog(desc, dueDate, priority) {
   const inputDueDate = document.createElement('input');
   inputDueDate.type = 'date';
 
+  let currentPriority = item.priority;
   const inputLowPriority = document.createElement('button');
   inputLowPriority.textContent = 'Low';
   const inputMediumPriority = document.createElement('button');
   inputMediumPriority.textContent = 'Medium';
   const inputHighPriority = document.createElement('button');
   inputHighPriority.textContent = 'High';
+
+  inputLowPriority.addEventListener('click', () => (currentPriority = 'Low'));
+  inputMediumPriority.addEventListener(
+    'click',
+    () => (currentPriority = 'Medium'),
+  );
+  inputHighPriority.addEventListener('click', () => (currentPriority = 'High'));
+
+  const editButton = document.createElement('button');
+  editButton.textContent = 'Save';
+  editButton.addEventListener('click', () => {
+    item.desc = inputDesc.value;
+    item.dueDate = inputDueDate.value
+      ? new Date(inputDueDate.value)
+      : item.dueDate;
+    item.priority = currentPriority;
+    modal.classList.remove('is-visible');
+    render();
+  });
 
   header.append(heading, closeButton);
   editDiv.append(
@@ -162,6 +183,7 @@ export function createDetailDialog(desc, dueDate, priority) {
     inputLowPriority,
     inputMediumPriority,
     inputHighPriority,
+    editButton,
   );
   dialog.append(header, editDiv);
   modal.append(dialog);

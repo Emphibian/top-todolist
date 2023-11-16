@@ -16,12 +16,12 @@ const dialogController = createDialogController(
 );
 
 const list = createList('Default');
-list.createListItem('Do this', '');
-list.createListItem('Do that', '');
+list.createListItem('Do this');
+list.createListItem('Do that');
 
 const list2 = createList('test');
-list2.createListItem("don't do this at work!", '');
-list2.createListItem("definitely don't do this", '');
+list2.createListItem("don't do this at work!");
+list2.createListItem("definitely don't do this");
 
 projectController.addList(list);
 projectController.addList(list2);

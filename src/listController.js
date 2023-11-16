@@ -48,7 +48,7 @@ export default function createListController(createDetailDialog) {
       const editButton = document.createElement('button');
       editButton.textContent = 'Edit';
       editButton.addEventListener('click', () =>
-        details(item.desc, item.dueDate, item.priority),
+        details(item),
       );
 
       listItemDiv.append(
@@ -107,8 +107,8 @@ export default function createListController(createDetailDialog) {
     render();
   }
 
-  function details(desc, dueDate, priority) {
-    createDetailDialog(desc, dueDate, priority);
+  function details(item) {
+    createDetailDialog(item, () => render());
   }
 
   return {
