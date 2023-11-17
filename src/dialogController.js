@@ -145,8 +145,21 @@ export function createDetailDialog(item, render) {
   labelDesc.textContent = 'Task: ';
   labelDesc.for = 'desc';
 
+  const labelDueDate = document.createElement('label');
+  labelDueDate.textContent = 'Due Date: ';
+  labelDueDate.for = 'due-date';
+
   const inputDueDate = document.createElement('input');
   inputDueDate.type = 'date';
+  inputDueDate.id = 'due-date';
+
+  const labelPriority = document.createElement('label');
+  labelPriority.textContent = 'Priority: ';
+  labelPriority.for = 'priority';
+
+  const priorityDiv = document.createElement('div');
+  priorityDiv.classList.add('priority-div');
+  priorityDiv.id = 'priority';
 
   let currentPriority = item.priority;
   const inputLowPriority = document.createElement('button');
@@ -175,14 +188,15 @@ export function createDetailDialog(item, render) {
     render();
   });
 
+  priorityDiv.append(inputLowPriority, inputMediumPriority, inputHighPriority);
   header.append(heading, closeButton);
   editDiv.append(
     labelDesc,
     inputDesc,
+    labelDueDate,
     inputDueDate,
-    inputLowPriority,
-    inputMediumPriority,
-    inputHighPriority,
+    labelPriority,
+    priorityDiv,
     editButton,
   );
   dialog.append(header, editDiv);
