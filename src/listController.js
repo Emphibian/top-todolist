@@ -1,8 +1,8 @@
 import './style.css';
 import trashCan from './assets/trash-can-outline.svg';
-import undoImg from './assets/undo-variant.svg'
+import undoImg from './assets/undo-variant.svg';
 
-export default function createListController() {
+export default function createListController(createDetailDialog) {
   let curList;
 
   function setList(list) {
@@ -45,10 +45,19 @@ export default function createListController() {
         render();
       });
 
-      listItemDiv.appendChild(doneCheckbox);
-      listItemDiv.appendChild(descPara);
-      listItemDiv.appendChild(dueDatePara);
-      listItemDiv.appendChild(deleteButton);
+      const editButton = document.createElement('button');
+      editButton.textContent = 'Edit';
+      editButton.addEventListener('click', () =>
+        details(item),
+      );
+
+      listItemDiv.append(
+        doneCheckbox,
+        descPara,
+        dueDatePara,
+        deleteButton,
+        editButton,
+      );
 
       todoListDiv.appendChild(listItemDiv);
     });
@@ -96,6 +105,10 @@ export default function createListController() {
   function addItem(desc, dueDate, priority) {
     curList.createListItem(desc, dueDate, priority);
     render();
+  }
+
+  function details(item) {
+    createDetailDialog(item, () => render());
   }
 
   return {

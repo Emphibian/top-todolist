@@ -1,6 +1,7 @@
 import createList from './list.js';
+import './style.css';
 
-export default function createDialogController(addTask, addProject) {
+export function createDialogController(addTask, addProject) {
   function open() {
     const dialog = document.querySelector('dialog');
     const dialogSideDiv = document.querySelector('.dialog-side');
@@ -113,4 +114,91 @@ export default function createDialogController(addTask, addProject) {
   return {
     open,
   };
+}
+
+export function createDetailDialog(item, render) {
+  const modal = document.querySelector('.modal');
+  modal.classList.add('is-visible');
+  modal.innerHTML = '';
+
+  const dialog = document.createElement('div');
+  dialog.classList.add('dialog');
+  const header = document.createElement('div');
+  header.classList.add('dialog-header');
+  const heading = document.createElement('h2');
+  heading.textContent = 'Edit task';
+  const closeButton = document.createElement('button');
+  closeButton.textContent = 'x';
+  closeButton.addEventListener('click', () =>
+    modal.classList.remove('is-visible'),
+  );
+
+  const editDiv = document.createElement('div');
+  editDiv.classList.add('edit-div');
+
+  const inputDesc = document.createElement('input');
+  inputDesc.type = 'text';
+  inputDesc.id = 'desc';
+  inputDesc.value = item.desc;
+
+  const labelDesc = document.createElement('label');
+  labelDesc.textContent = 'Task: ';
+  labelDesc.for = 'desc';
+
+  const labelDueDate = document.createElement('label');
+  labelDueDate.textContent = 'Due Date: ';
+  labelDueDate.for = 'due-date';
+
+  const inputDueDate = document.createElement('input');
+  inputDueDate.type = 'date';
+  inputDueDate.id = 'due-date';
+
+  const labelPriority = document.createElement('label');
+  labelPriority.textContent = 'Priority: ';
+  labelPriority.for = 'priority';
+
+  const priorityDiv = document.createElement('div');
+  priorityDiv.classList.add('priority-div');
+  priorityDiv.id = 'priority';
+
+  let currentPriority = item.priority;
+  const inputLowPriority = document.createElement('button');
+  inputLowPriority.textContent = 'Low';
+  const inputMediumPriority = document.createElement('button');
+  inputMediumPriority.textContent = 'Medium';
+  const inputHighPriority = document.createElement('button');
+  inputHighPriority.textContent = 'High';
+
+  inputLowPriority.addEventListener('click', () => (currentPriority = 'Low'));
+  inputMediumPriority.addEventListener(
+    'click',
+    () => (currentPriority = 'Medium'),
+  );
+  inputHighPriority.addEventListener('click', () => (currentPriority = 'High'));
+
+  const editButton = document.createElement('button');
+  editButton.textContent = 'Save';
+  editButton.addEventListener('click', () => {
+    item.desc = inputDesc.value;
+    item.dueDate = inputDueDate.value
+      ? new Date(inputDueDate.value)
+      : item.dueDate;
+    item.priority = currentPriority;
+    modal.classList.remove('is-visible');
+    render();
+  });
+
+  priorityDiv.append(inputLowPriority, inputMediumPriority, inputHighPriority);
+  header.append(heading, closeButton);
+  editDiv.append(
+    labelDesc,
+    inputDesc,
+    labelDueDate,
+    inputDueDate,
+    labelPriority,
+    priorityDiv,
+    editButton,
+  );
+  dialog.append(header, editDiv);
+  modal.append(dialog);
 }

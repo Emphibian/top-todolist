@@ -1,11 +1,14 @@
 import './style.css';
 import createProjectController from './projectController.js';
 import createListController from './listController.js';
-import createDialogController from './dialogController.js';
+import {
+  createDialogController,
+  createDetailDialog,
+} from './dialogController.js';
 import createList from './list.js';
 import createAddButton from './addButton.js';
 
-const listController = createListController();
+const listController = createListController(createDetailDialog);
 const projectController = createProjectController(listController);
 const dialogController = createDialogController(
   (desc, dueDate, priority) => listController.addItem(desc, dueDate, priority),
@@ -13,12 +16,12 @@ const dialogController = createDialogController(
 );
 
 const list = createList('Default');
-list.createListItem('Do this', '');
-list.createListItem('Do that', '');
+list.createListItem('Do this');
+list.createListItem('Do that');
 
 const list2 = createList('test');
-list2.createListItem("don't do this at work!", '');
-list2.createListItem("definitely don't do this", '');
+list2.createListItem("don't do this at work!");
+list2.createListItem("definitely don't do this");
 
 projectController.addList(list);
 projectController.addList(list2);
@@ -38,3 +41,10 @@ function closeDialog() {
 
 let closeButton = document.querySelector('dialog button');
 closeButton.addEventListener('click', closeDialog);
+const isVisible = 'is-visible';
+
+document.addEventListener('keyup', (e) => {
+  if (e.key == 'Escape' && document.querySelector('.modal.is-visible')) {
+    document.querySelector('.modal.is-visible').classList.remove('is-visible');
+  }
+});
