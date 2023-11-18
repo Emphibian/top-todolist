@@ -23,8 +23,13 @@ export default function createProjectController(listController) {
     render();
   }
 
+  function setList() {
+    if (!projectArray.length) listController.setList(projectArray[0]);
+  }
+
   return {
     render,
     addList,
+    setList,
   };
 }
