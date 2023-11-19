@@ -20,6 +20,20 @@ export default function createProjectController(listController) {
 
   function addList(listObj) {
     projectArray.push(listObj);
+
+    if (!localStorage.getItem('projects'))
+      localStorage.setItem('projects', JSON.stringify([]));
+    const projects = JSON.parse(localStorage.getItem('projects'));
+    projects.push(listObj.title);
+    localStorage.setItem('projects', JSON.stringify(projects));
+
+    const tempObj = {
+      title: listObj.title,
+      tasks: listObj.getItems(),
+      completedTasks: listObj.getCompletedItems(),
+    };
+    localStorage.setItem(`${listObj.title}`, JSON.stringify(tempObj));
+
     render();
   }
 

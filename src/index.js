@@ -40,6 +40,7 @@ function populateStorage() {
 
 function setUpProjects() {
   const projects = JSON.parse(localStorage.getItem('projects'));
+  localStorage.removeItem('projects');
 
   projects.forEach((project) => {
     const list = createList(project);
