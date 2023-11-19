@@ -32,17 +32,31 @@ function populateStorage() {
     completedTasks: list.getCompletedItems(),
   };
 
-  localStorage.setItem('projects', JSON.stringify([tempObj]));
+  localStorage.setItem('projects', JSON.stringify([tempObj.title]));
+  localStorage.setItem(`${tempObj.title}`, JSON.stringify(tempObj));
+
   setUpProjects();
 }
 
 function setUpProjects() {
   const projects = JSON.parse(localStorage.getItem('projects'));
+
   projects.forEach((project) => {
-    const list = createList(project.title);
-    project.tasks.forEach((item) =>
-      list.createListItem(item.desc, new Date(item.dueDate), item.priority),
-    );
+    const list = createList(project);
+    const listObj = JSON.parse(localStorage.getItem(`${project}`));
+
+    listObj.tasks.forEach((task) => {
+      list.createListItem(task.desc, new Date(task.dueDate), task.priority);
+    });
+
+    listObj.completedTasks.forEach((task) => {
+      list.createListItem(
+        task.desc,
+        new Date(task.dueDate),
+        task.priority,
+        true,
+      );
+    });
 
     projectController.addList(list);
   });

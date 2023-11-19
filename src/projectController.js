@@ -24,7 +24,7 @@ export default function createProjectController(listController) {
   }
 
   function setList() {
-    if (!projectArray.length) listController.setList(projectArray[0]);
+    if (projectArray.length) listController.setList(projectArray[0]);
   }
 
   return {
