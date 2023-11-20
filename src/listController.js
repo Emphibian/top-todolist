@@ -9,6 +9,16 @@ export default function createListController(createDetailDialog) {
     curList = list;
   }
 
+  function save() {
+    const tasks = curList.getItems();
+    const completedTasks = curList.getCompletedItems();
+
+    localStorage.setItem(
+      curList.title,
+      JSON.stringify({ title: curList.title, tasks, completedTasks }),
+    );
+  }
+
   function render() {
     if (!curList) return;
 
@@ -33,6 +43,7 @@ export default function createListController(createDetailDialog) {
       doneCheckbox.type = 'checkbox';
       doneCheckbox.addEventListener('click', () => {
         curList.markDone(index);
+        save();
         render();
       });
 
@@ -42,14 +53,13 @@ export default function createListController(createDetailDialog) {
       deleteButton.appendChild(deleteButtonImage);
       deleteButton.addEventListener('click', () => {
         curList.deleteListItem(index);
+        save();
         render();
       });
 
       const editButton = document.createElement('button');
       editButton.textContent = 'Edit';
-      editButton.addEventListener('click', () =>
-        details(item),
-      );
+      editButton.addEventListener('click', () => details(item));
 
       listItemDiv.append(
         doneCheckbox,
@@ -83,6 +93,7 @@ export default function createListController(createDetailDialog) {
       undoButton.appendChild(undoImage);
       undoButton.addEventListener('click', () => {
         curList.undoListItem(index);
+        save();
         render();
       });
 
@@ -92,6 +103,7 @@ export default function createListController(createDetailDialog) {
       deleteButton.appendChild(deleteButtonImage);
       deleteButton.addEventListener('click', () => {
         curList.deleteDoneItem(index);
+        save();
         render();
       });
 
@@ -104,11 +116,15 @@ export default function createListController(createDetailDialog) {
 
   function addItem(desc, dueDate, priority) {
     curList.createListItem(desc, dueDate, priority);
+    save();
     render();
   }
 
   function details(item) {
-    createDetailDialog(item, () => render());
+    createDetailDialog(item, () => {
+      save();
+      render();
+    });
   }
 
   return {
