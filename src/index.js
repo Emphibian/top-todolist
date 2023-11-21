@@ -15,21 +15,57 @@ const dialogController = createDialogController(
   (list) => projectController.addList(list),
 );
 
-const list = createList('Default');
-list.createListItem('Do this');
-list.createListItem('Do that');
+if (!localStorage.getItem('projects')) {
+  populateStorage();
+} else {
+  setUpProjects();
+}
 
-const list2 = createList('test');
-list2.createListItem("don't do this at work!");
-list2.createListItem("definitely don't do this");
+function populateStorage() {
+  const list = createList('Default');
+  list.createListItem('Do this');
+  list.createListItem('Do that');
 
-projectController.addList(list);
-projectController.addList(list2);
+  const tempObj = {
+    title: list.title,
+    tasks: list.getItems(),
+    completedTasks: list.getCompletedItems(),
+  };
 
-listController.setList(list);
-listController.render();
+  localStorage.setItem('projects', JSON.stringify([tempObj.title]));
+  localStorage.setItem(`${tempObj.title}`, JSON.stringify(tempObj));
 
-projectController.render();
+  setUpProjects();
+}
+
+function setUpProjects() {
+  const projects = JSON.parse(localStorage.getItem('projects'));
+  localStorage.removeItem('projects');
+
+  projects.forEach((project) => {
+    const list = createList(project);
+    const listObj = JSON.parse(localStorage.getItem(`${project}`));
+
+    listObj.tasks.forEach((task) => {
+      list.createListItem(task.desc, new Date(task.dueDate), task.priority);
+    });
+
+    listObj.completedTasks.forEach((task) => {
+      list.createListItem(
+        task.desc,
+        new Date(task.dueDate),
+        task.priority,
+        true,
+      );
+    });
+
+    projectController.addList(list);
+  });
+
+  projectController.setList();
+  listController.render();
+  projectController.render();
+}
 
 const addButton = createAddButton(dialogController);
 document.body.appendChild(addButton);
@@ -41,7 +77,6 @@ function closeDialog() {
 
 let closeButton = document.querySelector('dialog button');
 closeButton.addEventListener('click', closeDialog);
-const isVisible = 'is-visible';
 
 document.addEventListener('keyup', (e) => {
   if (e.key == 'Escape' && document.querySelector('.modal.is-visible')) {
