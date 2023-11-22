@@ -58,6 +58,11 @@ main {
   border-radius: 1px;
   background-color: #cfbefe;
   font-size: 14px;
+  transition: transform 150ms ease-in-out;
+}
+
+.todo-item:hover {
+  transform: scale(105%);
 }
 
 .todo-item p:nth-child(2) {
