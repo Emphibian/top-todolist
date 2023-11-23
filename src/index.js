@@ -83,3 +83,14 @@ document.addEventListener('keyup', (e) => {
     document.querySelector('.modal.is-visible').classList.remove('is-visible');
   }
 });
+
+document.addEventListener('mouseup', (e) => {
+  const dialogDiv = document.querySelector('div.dialog');
+  if (e.target != dialogDiv && e.target.parentNode != dialogDiv) {
+    if (document.querySelector('.modal.is-visible')) {
+      document
+        .querySelector('.modal.is-visible')
+        .classList.remove('is-visible');
+    }
+  }
+});
