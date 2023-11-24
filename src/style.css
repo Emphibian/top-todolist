@@ -26,13 +26,15 @@ main {
   background-color: inherit;
   width: 100%;
   border: none;
-  font-size: 18px;
+  font-size: 1.28rem;
   padding: 0.5rem 0;
 }
 
 .sidebar button:hover {
   background-color: #9674f9;
   color: #ffffff;
+  font-weight: 500;
+  font-size: 1.4rem;
 }
 
 .todo-list {
