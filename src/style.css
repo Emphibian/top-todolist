@@ -37,6 +37,11 @@ main {
   font-size: 1.4rem;
 }
 
+.sidebar button.selected {
+  background-color: #c4b0ff;
+  color: #ffffff;
+}
+
 .todo-list {
   display: flex;
   flex-direction: column;

@@ -1,5 +1,6 @@
 export default function createProjectController(listController) {
   const projectArray = [];
+  let curList;
 
   function render() {
     const sidebarDiv = document.querySelector('.sidebar');
@@ -8,10 +9,13 @@ export default function createProjectController(listController) {
     projectArray.forEach((project) => {
       const listButton = document.createElement('button');
       listButton.textContent = project.title;
+      if (project === curList) listButton.classList.add('selected');
 
       listButton.addEventListener('click', () => {
         listController.setList(project);
         listController.render();
+        curList = project;
+        render();
       });
 
       sidebarDiv.appendChild(listButton);
@@ -39,6 +43,7 @@ export default function createProjectController(listController) {
 
   function setList() {
     if (projectArray.length) listController.setList(projectArray[0]);
+    curList = projectArray[0];
   }
 
   return {
