@@ -76,9 +76,13 @@ export default function createListController(createDetailDialog) {
     completedDiv.textContent = '';
     const completedHeading = document.createElement('h2');
     completedHeading.textContent = 'Completed Tasks';
-    const completedPara = document.createElement('p');
-    completedPara.textContent = 'Completed tasks show up here';
-    completedDiv.append(completedHeading, completedPara);
+    completedDiv.append(completedHeading);
+    if (!curList.getCompletedItems().length) {
+      const completedPara = document.createElement('p');
+      completedPara.textContent = 'Completed tasks show up here';
+      completedDiv.append(completedPara);
+    }
+
 
     curList.getCompletedItems().forEach((item, index) => {
       const listItemDiv = document.createElement('div');
