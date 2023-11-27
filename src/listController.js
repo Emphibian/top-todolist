@@ -83,7 +83,6 @@ export default function createListController(createDetailDialog) {
       completedDiv.append(completedPara);
     }
 
-
     curList.getCompletedItems().forEach((item, index) => {
       const listItemDiv = document.createElement('div');
       listItemDiv.classList.add('completed-item');
