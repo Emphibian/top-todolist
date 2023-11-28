@@ -1,6 +1,7 @@
 import './style.css';
 import trashCan from './assets/trash-can-outline.svg';
 import undoImg from './assets/undo-variant.svg';
+import menuIcon from './assets/menu.svg';
 
 export default function createListController(createDetailDialog) {
   let curList;
@@ -58,7 +59,9 @@ export default function createListController(createDetailDialog) {
       });
 
       const editButton = document.createElement('button');
-      editButton.textContent = 'Edit';
+      const menuImage = new Image();
+      menuImage.src = menuIcon;
+      editButton.appendChild(menuImage);
       editButton.addEventListener('click', () => details(item));
 
       listItemDiv.append(
