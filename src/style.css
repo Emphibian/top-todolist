@@ -5,14 +5,13 @@
 }
 
 body {
-  max-width: 75rem;
   margin: 0 auto;
 }
 
 main {
   display: grid;
   min-height: 100vh;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 15rem 1fr;
 }
 
 .sidebar {
