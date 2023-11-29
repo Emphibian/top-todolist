@@ -1,8 +1,8 @@
-export default function createTodoItem(
-  desc,
-  dueDate = new Date(),
-  priority = 'Low',
-) {
+export default function createTodoItem(desc, dueDateValue, priority = 'Low') {
+  let dueDate;
+  if (!dueDateValue) dueDate = new Date();
+  else dueDate = new Date(dueDateValue);
+
   return {
     desc,
     dueDate,

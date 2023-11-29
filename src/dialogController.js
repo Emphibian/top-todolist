@@ -94,7 +94,7 @@ export function createDialogController(addTask, addProject) {
     button.addEventListener('click', () => {
       addTask(
         inputDesc.value,
-        new Date(inputDueDate.value),
+        inputDueDate.value,
         inputPriority.value,
       );
     });
