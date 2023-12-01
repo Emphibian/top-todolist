@@ -70,14 +70,6 @@ function setUpProjects() {
 const addButton = createAddButton(dialogController);
 document.body.appendChild(addButton);
 
-function closeDialog() {
-  let dialog = document.querySelector('#add-task');
-  dialog.close();
-}
-
-let closeButton = document.querySelector('dialog button');
-closeButton.addEventListener('click', closeDialog);
-
 document.addEventListener('keyup', (e) => {
   if (e.key == 'Escape' && document.querySelector('.modal.is-visible')) {
     document.querySelector('.modal.is-visible').classList.remove('is-visible');
@@ -85,12 +77,7 @@ document.addEventListener('keyup', (e) => {
 });
 
 document.addEventListener('mouseup', (e) => {
-  const dialogDiv = document.querySelector('div.dialog');
-  if (e.target != dialogDiv && e.target.parentNode != dialogDiv) {
-    if (document.querySelector('.modal.is-visible')) {
-      document
-        .querySelector('.modal.is-visible')
-        .classList.remove('is-visible');
-    }
+  if (e.target == document.querySelector('.modal.is-visible')) {
+    document.querySelector('.modal.is-visible').classList.remove('is-visible');
   }
 });

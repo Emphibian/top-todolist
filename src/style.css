@@ -136,18 +136,19 @@ body > button:hover {
   top: 25%;
   margin: 0 auto;
   border: none;
-  background-color: #f2effe;
   width: 35rem;
   height: 25rem;
   border-radius: 3px;
   font-size: 20px;
 }
 
-.dialog-container {
+.dialog {
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: auto 1fr;
+  background-color: #f2effe;
   height: 100%;
+  width: 100%;
 }
 
 .dialog-side {
@@ -162,7 +163,7 @@ body > button:hover {
   font-size: 17px;
 }
 
-form.dialog {
+.dialog-main {
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -171,7 +172,7 @@ form.dialog {
   padding-top: 2rem;
 }
 
-form.dialog > div {
+.dialog-main > div {
   font-family: Roboto, sans-serif;
   width: 100%;
   display: grid;
@@ -179,7 +180,7 @@ form.dialog > div {
   gap: 1rem;
 }
 
-form.dialog > button {
+.dialog-main > button {
   width: 10rem;
   height: 2rem;
   font-size: 16px;
@@ -223,7 +224,7 @@ form.dialog > button {
   opacity: 1;
 }
 
-.modal .dialog {
+.modal .dialog-container {
   height: clamp(100px, 15rem, 50%);
   width: clamp(200px, 30rem, 50%);
   font-size: 16px;

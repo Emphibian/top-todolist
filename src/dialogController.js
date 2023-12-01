@@ -3,7 +3,14 @@ import './style.css';
 
 export function createDialogController(addTask, addProject) {
   function open() {
-    const dialog = document.querySelector('dialog');
+    const dialog = document.querySelector('#modal2');
+    dialog.classList.add('is-visible');
+
+    const closeButton = document.querySelector('.title-bar > button');
+    closeButton.addEventListener('click', () => {
+      dialog.classList.remove('is-visible');
+    });
+
     const dialogSideDiv = document.querySelector('.dialog-side');
     dialogSideDiv.innerHTML = '';
 
@@ -17,11 +24,10 @@ export function createDialogController(addTask, addProject) {
 
     dialogSideDiv.appendChild(taskButton);
     dialogSideDiv.appendChild(projectButton);
-    dialog.showModal();
   }
 
   function createProjectForm() {
-    const form = document.querySelector('form.dialog');
+    const form = document.querySelector('.dialog-main');
     form.innerHTML = '';
 
     const inputDiv = document.createElement('div');
@@ -49,7 +55,7 @@ export function createDialogController(addTask, addProject) {
   }
 
   function createTaskForm() {
-    const form = document.querySelector('form.dialog');
+    const form = document.querySelector('.dialog-main');
     form.innerHTML = '';
 
     const inputDiv = document.createElement('div');
@@ -92,11 +98,7 @@ export function createDialogController(addTask, addProject) {
     button.textContent = 'Add Task';
 
     button.addEventListener('click', () => {
-      addTask(
-        inputDesc.value,
-        inputDueDate.value,
-        inputPriority.value,
-      );
+      addTask(inputDesc.value, inputDueDate.value, inputPriority.value);
     });
 
     inputDiv.append(
@@ -117,12 +119,12 @@ export function createDialogController(addTask, addProject) {
 }
 
 export function createDetailDialog(item, render) {
-  const modal = document.querySelector('.modal');
+  const modal = document.querySelector('#modal1');
   modal.classList.add('is-visible');
   modal.innerHTML = '';
 
   const dialog = document.createElement('div');
-  dialog.classList.add('dialog');
+  dialog.classList.add('dialog-container');
   const header = document.createElement('div');
   header.classList.add('dialog-header');
   const heading = document.createElement('h2');
