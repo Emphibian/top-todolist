@@ -46,6 +46,8 @@ export function createDialogController(addTask, addProject) {
     button.addEventListener('click', () => {
       const listObj = createList(inputDesc.value);
       addProject(listObj);
+      const dialog = document.querySelector('#modal2');
+      dialog.classList.remove('is-visible');
     });
 
     inputDiv.appendChild(label);
@@ -99,6 +101,8 @@ export function createDialogController(addTask, addProject) {
 
     button.addEventListener('click', () => {
       addTask(inputDesc.value, inputDueDate.value, inputPriority.value);
+      const dialog = document.querySelector('#modal2');
+      dialog.classList.remove('is-visible');
     });
 
     inputDiv.append(
