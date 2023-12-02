@@ -16,13 +16,14 @@ main {
 
 .sidebar {
   padding: 5rem 0;
-  background-color: #f2effe;
+  background-color: #2e2e2e;
   display: flex;
   flex-direction: column;
 }
 
 .sidebar button {
   background-color: inherit;
+  color: white;
   width: 100%;
   border: none;
   font-size: 1.28rem;
@@ -30,15 +31,18 @@ main {
 }
 
 .sidebar button:hover {
-  background-color: #9674f9;
+  background-color: #3d3d3d;
   color: #ffffff;
   font-weight: 500;
   font-size: 1.4rem;
 }
 
 .sidebar button.selected {
-  background-color: #c4b0ff;
+  background-color: #4d4949;
   color: #ffffff;
+  box-shadow: -1px -1px inset #575050;
+  border-left: 2px solid #cfbefe;
+  font-weight: 500;
 }
 
 .todo-list {
