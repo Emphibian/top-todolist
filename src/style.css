@@ -77,6 +77,12 @@ main {
   flex: 1;
 }
 
+.todo-item > button {
+  border: none;
+  background-color: inherit;
+  height: 1.5rem;
+}
+
 .todo-item > button > img,
 .completed-item > button > img {
   width: 1.5rem;
