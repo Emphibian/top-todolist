@@ -88,6 +88,10 @@ main {
   width: 1.5rem;
 }
 
+.todo-item > button:hover {
+  background-color: #e1dfea;
+}
+
 .completed-div {
   margin: 0 auto;
   text-align: center;
