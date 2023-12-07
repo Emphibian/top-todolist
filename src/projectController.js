@@ -41,6 +41,20 @@ export default function createProjectController(listController) {
     render();
   }
 
+  function deleteList(listObj) {
+    let index = projectArray.find(listObj);
+    projectArray.splice(index, 1);
+
+    const projects = JSON.parse(localStorage.getItem('projects'));
+    projects.splice(projects.find(listObj.title), 1);
+    localStorage.setItem('projects', JSON.stringify(projects));
+
+    localStorage.removeItem(`${listObj.title}`);
+
+    curList = projectArray[0];
+    render();
+  }
+
   function setList() {
     if (projectArray.length) listController.setList(projectArray[0]);
     curList = projectArray[0];
