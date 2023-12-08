@@ -21,6 +21,10 @@ main {
   flex-direction: column;
 }
 
+.sidebar-list-div {
+  display: flex;
+}
+
 .sidebar button {
   background-color: inherit;
   color: white;
@@ -43,6 +47,23 @@ main {
   box-shadow: -1px -1px inset #575050;
   border-left: 2px solid #cfbefe;
   font-weight: 500;
+}
+
+.list-options-div {
+  position: relative;
+  color: #ffffff;
+}
+
+.list-options-div > div {
+  position: absolute;
+  top: 2.5rem;
+  left: -1rem;
+  background-color: red;
+  font-size: 16px;
+}
+
+.is-invisible {
+  display: none;
 }
 
 .todo-list {

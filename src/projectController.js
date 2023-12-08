@@ -7,9 +7,10 @@ export default function createProjectController(listController) {
     sidebarDiv.innerHTML = '';
 
     projectArray.forEach((project) => {
+      const listDiv = document.createElement('div');
+      listDiv.classList.add('sidebar-list-div');
       const listButton = document.createElement('button');
       listButton.textContent = project.title;
-      if (project === curList) listButton.classList.add('selected');
 
       listButton.addEventListener('click', () => {
         listController.setList(project);
@@ -18,7 +19,34 @@ export default function createProjectController(listController) {
         render();
       });
 
-      sidebarDiv.appendChild(listButton);
+      listDiv.append(listButton);
+ 
+      if (project === curList) {
+        listButton.classList.add('selected');
+        const listOptionsDiv = document.createElement('div');
+        listOptionsDiv.classList.add('list-options-div');
+        const para = document.createElement('p');
+        para.textContent = 'more';
+
+        const listOptionsList = document.createElement('div');
+        listOptionsList.classList.add('is-invisible');
+        const deletePara = document.createElement('p');
+        deletePara.textContent = 'Delete';
+
+        listOptionsList.append(deletePara);
+        listOptionsDiv.append(para, listOptionsList);
+        listDiv.append(listOptionsDiv);
+
+        listOptionsDiv.addEventListener('click', () => {
+          listOptionsList.classList.toggle('is-invisible');
+        });
+
+        listOptionsList.addEventListener('click', () => {
+          deleteList(curList);
+        })
+      }
+
+     sidebarDiv.appendChild(listDiv);
     });
   }
 
@@ -42,11 +70,11 @@ export default function createProjectController(listController) {
   }
 
   function deleteList(listObj) {
-    let index = projectArray.find(listObj);
+    let index = projectArray.findIndex((item) => item.title === listObj.title);
     projectArray.splice(index, 1);
 
     const projects = JSON.parse(localStorage.getItem('projects'));
-    projects.splice(projects.find(listObj.title), 1);
+    projects.splice(projects.findIndex((item) => item.title === listObj.title), 1);
     localStorage.setItem('projects', JSON.stringify(projects));
 
     localStorage.removeItem(`${listObj.title}`);

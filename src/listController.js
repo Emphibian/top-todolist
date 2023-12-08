@@ -26,6 +26,7 @@ export default function createListController(createDetailDialog) {
     const todoListDiv = document.querySelector('.todo-list');
     const todoAreaDiv = document.querySelector('.todo-area');
     todoListDiv.innerHTML = '';
+
     curList.getItems().forEach((item, index) => {
       const listItemDiv = document.createElement('div');
       listItemDiv.classList.add('todo-item');
