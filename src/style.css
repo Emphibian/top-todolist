@@ -308,3 +308,7 @@ body > button:hover {
   display: flex;
   gap: 1rem;
 }
+
+input:invalid {
+  border: 1px solid red;
+}

@@ -39,11 +39,19 @@ export function createDialogController(addTask, addProject) {
     inputDesc.type = 'text';
     inputDesc.id = 'desc';
     inputDesc.name = 'desc';
+    inputDesc.required = true;
 
     const button = document.createElement('button');
+    button.type = 'submit';
     button.textContent = 'Add project';
 
     button.addEventListener('click', () => {
+      event.preventDefault();
+      if (inputDesc.validity.valueMissing) {
+        inputDesc.setCustomValidity('Enter a name!');
+        return;
+      }
+
       const listObj = createList(inputDesc.value);
       addProject(listObj);
       const dialog = document.querySelector('#modal2');
