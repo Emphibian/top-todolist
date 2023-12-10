@@ -77,6 +77,7 @@ export function createDialogController(addTask, addProject) {
     inputDesc.type = 'text';
     inputDesc.id = 'desc';
     inputDesc.name = 'desc';
+    inputDesc.required = true;
 
     const labelDueDate = document.createElement('label');
     labelDueDate.htmlFor = 'due-date';
@@ -86,6 +87,7 @@ export function createDialogController(addTask, addProject) {
     inputDueDate.type = 'date';
     inputDueDate.id = 'due-date';
     inputDueDate.name = 'due-date';
+    inputDueDate.required = true;
 
     const labelPriority = document.createElement('label');
     labelPriority.htmlFor = 'priority';
@@ -108,6 +110,16 @@ export function createDialogController(addTask, addProject) {
     button.textContent = 'Add Task';
 
     button.addEventListener('click', () => {
+      event.preventDefault();
+
+      if (inputDesc.validity.valueMissing) {
+        inputDesc.setCustomValidity('Enter a name!');
+        return;
+      } else if (inputDueDate.validity.valueMissing) {
+        inputDueDate.setCustomValidity('Enter a date!');
+        return;
+      }
+
       addTask(inputDesc.value, inputDueDate.value, inputPriority.value);
       const dialog = document.querySelector('#modal2');
       dialog.classList.remove('is-visible');
