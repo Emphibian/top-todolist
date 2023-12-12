@@ -1,3 +1,6 @@
+import './style.css';
+import dotsVertical from './assets/dots-vertical.svg';
+
 export default function createProjectController(listController) {
   const projectArray = [];
   let curList;
@@ -20,13 +23,13 @@ export default function createProjectController(listController) {
       });
 
       listDiv.append(listButton);
- 
+
       if (project === curList) {
         listButton.classList.add('selected');
         const listOptionsDiv = document.createElement('div');
         listOptionsDiv.classList.add('list-options-div');
-        const para = document.createElement('p');
-        para.textContent = 'more';
+        const dotsImage = new Image();
+        dotsImage.src = dotsVertical;
 
         const listOptionsList = document.createElement('div');
         listOptionsList.classList.add('is-invisible');
@@ -34,7 +37,7 @@ export default function createProjectController(listController) {
         deletePara.textContent = 'Delete';
 
         listOptionsList.append(deletePara);
-        listOptionsDiv.append(para, listOptionsList);
+        listOptionsDiv.append(dotsImage, listOptionsList);
         listDiv.append(listOptionsDiv);
 
         listOptionsDiv.addEventListener('click', () => {
@@ -43,10 +46,10 @@ export default function createProjectController(listController) {
 
         listOptionsList.addEventListener('click', () => {
           deleteList(curList);
-        })
+        });
       }
 
-     sidebarDiv.appendChild(listDiv);
+      sidebarDiv.appendChild(listDiv);
     });
   }
 
@@ -74,7 +77,10 @@ export default function createProjectController(listController) {
     projectArray.splice(index, 1);
 
     const projects = JSON.parse(localStorage.getItem('projects'));
-    projects.splice(projects.findIndex((item) => item.title === listObj.title), 1);
+    projects.splice(
+      projects.findIndex((item) => item.title === listObj.title),
+      1,
+    );
     localStorage.setItem('projects', JSON.stringify(projects));
 
     localStorage.removeItem(`${listObj.title}`);

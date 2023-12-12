@@ -52,6 +52,9 @@ main {
 .list-options-div {
   position: relative;
   color: #ffffff;
+  width: 2rem;
+  display: flex;
+  align-items: center;
 }
 
 .list-options-div > div {
